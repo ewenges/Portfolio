@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio - Étudiant IUT Informatique</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Portfolio IUT Info</h1>
+        <nav>
+            <a href="#about">À propos</a>
+            <a href="#skills">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about" class="about">
+            <h2>À propos de moi</h2>
+            <p>Bonjour ! Je m'appele Ewen, je suis étudiant en première année d'IUT Informatique a Lannion. Je suis passionné par la programmation, le développement web, et les nouvelles technologies. Je m'investis dans mes études pour commencer à construire mon futur professionnel dans le domaine de l'informatique.</p>
+        </section>
+        <section id="skills">
+            <h2>Compétences</h2>
+            <ul class="skills-list">
+                <li>HTML & CSS</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>SQL</li>
+                <li>Git & GitHub</li>
+                <li>Algorithmes & Logique</li>
+                <li>Linux</li>
+                <li>Travail en équipe</li>
+            </ul>
+        </section>
+        <section id="projects">
+            <h2>Projets</h2>
+            <div class="project-container">
+                <button class="project-button" data-project="site-personnel" data-url="https://github.com/ewenges/SiteJeuxOlympique">
+                    <strong>Site Jeux Olympique</strong>
+                    <p>Création d'un portfolio web en HTML/CSS.</p>
+                </button>
+                <button class="project-button" data-project="mini-jeu" data-url="https://github.com/ewenges/Snake">
+                    <strong>Snake en C</strong>
+                    <p>Développement d'un jeu simple en console pour la gestion des bases du langage.</p>
+                </button>
+                <button class="project-button" data-project="base-de-donnees" data-url="https://example.com/base-de-donnees">
+                    <strong>Projet base de données</strong>
+                    <p>Réalisation d'une base de données SQL avec requêtes pour un exemple de gestion commerciale.</p>
+                </button>
+                <button class="project-button" data-project="mini-reseau" data-url="https://example.com/mini-reseau">
+                    <strong>Mini réseau local</strong>
+                    <p>Mise en place d'un réseau local simulé pour comprendre les protocoles de communication.</p>
+                </button>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <label for="name">Nom</label>
+                <input type="text" id="name" name="name" placeholder="Votre nom" required />
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Votre email" required />
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Écrivez votre message ici..." rows="5" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+            <p id="form-response" style="margin-top:1rem; color:#00d9c0; font-weight:600;"></p>
+        </section>
+    </main>
+    <footer>
+        <div class="cv-download">
+            <a href="Copie de Bleu Vert CV Communication Marketing Moderne.pdf" class="cv-button" download>
+                <span class="icon">📄</span>
+                Télécharger mon CV
+            </a>
+        </div>
+        <br>
+        &copy; 2024 Étudiant IUT Informatique - Portfolio
+    </footer>
+    <script>
+        // Gestion du formulaire de contact
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = event.target.name.value.trim();
+            const responseEl = document.getElementById('form-response');
+            responseEl.textContent = `Merci, ${name} ! Votre message a bien été reçu.`;
+            event.target.reset();
+        }
+
+        // Gestion des projets
+        const projectButtons = document.querySelectorAll('.project-button');
+
+        projectButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const url = button.dataset.url;
+                window.open(url, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
